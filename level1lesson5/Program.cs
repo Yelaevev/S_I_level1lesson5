@@ -63,7 +63,7 @@ namespace Level1Space
             //double c = 5.0087987098797;
             double c = sum;
             double b = Math.Round(c, 5);  //okruglyem do 5 znaka posle zapytoy
-                                           Console.WriteLine(b + "=znachenie");
+                                          // Console.WriteLine(b + "=znachenie");
             b = b * 100000;// izbavlyamsy ot zapytoi
                            // Console.WriteLine(b + "=znachenie new");
             string str;
@@ -85,7 +85,7 @@ namespace Level1Space
         //static void Main(string[] args)
         //{
 
-        //    int[] test = { 8, 3,7,2,6 };
+        //    int[] test = { 1, 2, 3, 4, 5, 6, 2, 7, 8, 9 };
         //    string str;
         //    str = PatternUnlock(test.Length, test);
 
