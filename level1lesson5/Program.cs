@@ -22,37 +22,53 @@ namespace Level1Space
                 }
             }
 
-            double sum = -1;
-            for (int i = 0; i < hits.Length; i++)
-            {
-                sum = sum + 1;
 
-            }
-            for (int j = 0; j < hits.Length - 2; j++)
+            double sum = hits.Length - 1;
+            int[,] mass = new int[3, 3];
+            mass[0, 0] = 6; mass[0, 1] = 1; mass[0, 2] = 9;
+            mass[1, 0] = 5; mass[1, 1] = 2; mass[1, 2] = 8;
+            mass[2, 0] = 4; mass[2, 1] = 3; mass[2, 2] = 7;
+            for (int i = 0; i < hits.Length - 1; i++)
             {
-                if ((hits[j] > hits[j + 1])&& (hits[j + 1]<hits[j+2]))
+                for (int n = 0; n < 3; n++)
                 {
-                    sum = sum - 2 + 2 * Math.Sqrt(2);
-                }
-            }
+                    for (int m = 0; m < 3; m++)
+                    {
+                        if ((n >= 1) && (m <= 1) && (hits[i] == mass[n, m]) && (hits[i + 1] == mass[n - 1, m + 1]))
+                        {
+                            sum = sum - 1 + Math.Sqrt(2);
+                        }
 
-            for (int j = 0; j < hits.Length - 1; j++)
-            {
-                if ((hits[j] > hits[j + 1])&&(j+1== hits.Length-1)) 
-                {
-                    sum = sum - 1 + 1 * Math.Sqrt(2);
+
+                        if ((n <= 1) && (m <= 1) && (hits[i] == mass[n, m]) && (hits[i + 1] == mass[n + 1, m + 1]))
+                        {
+                            sum = sum - 1 + Math.Sqrt(2);
+                        }
+
+                        if ((n <= 1) && (m >= 1) && (hits[i] == mass[n, m]) && (hits[i + 1] == mass[n + 1, m - 1]))
+                        {
+                            sum = sum - 1 + Math.Sqrt(2);
+                        }
+
+                        if ((n >= 1) && (m >= 1) && (hits[i] == mass[n, m]) && (hits[i + 1] == mass[n - 1, m - 1]))
+                        {
+                            sum = sum - 1 + Math.Sqrt(2);
+                        }
+                    }
+
                 }
+
             }
             //Console.WriteLine(sum + "=znachenie sum");
             //double c = 5.0087987098797;
             double c = sum;
             double b = Math.Round(c, 5);  //okruglyem do 5 znaka posle zapytoy
-           // Console.WriteLine(b + "=znachenie");
+                                           Console.WriteLine(b + "=znachenie");
             b = b * 100000;// izbavlyamsy ot zapytoi
-           // Console.WriteLine(b + "=znachenie new");
+                           // Console.WriteLine(b + "=znachenie new");
             string str;
             str = b.ToString(); //perevodim v string
-           // Console.WriteLine(str + "=znachenie str");
+                                // Console.WriteLine(str + "=znachenie str");
             char zero = '0';
             foreach (char i in str)
             {
@@ -69,14 +85,13 @@ namespace Level1Space
         //static void Main(string[] args)
         //{
 
-        //    int[] test= { 1, 2, 3, 4, 5, 6, 2, 7,8, 3 };
-        //    //int[] test = {8, 3 };
+        //    int[] test = { 8, 3,7,2,6 };
         //    string str;
         //    str = PatternUnlock(test.Length, test);
 
         //    Console.WriteLine(str + "=znachenie str new");
 
-            
+
         //}
     }
 }
